@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+
+<style>
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+</style>
+
+<script src="js/require.js"></script>
+
+<script>
+
+require.config({
+	baseUrl: 'js',
+	urlArgs: "bust=" +  (new Date()).getTime()
+});
+
+define(
+	'Box2D',
+	['Box2dWeb/Box2dWeb-2.1.a.3.min'],
+	function() {
+		return Box2D;
+	}
+);
+
+</script>
+
+
+
+</head>
+<body>
+
+<script>
+
+require(
+	['game/Game'],
+	function(Game) {
+
+		var game = new Game(innerWidth,innerHeight-10);
+		document.body.appendChild(game.getElement());
+		
+		window.game = game;
+
+	}
+);
+
+</script>
+
+
+</body>
+</html>
